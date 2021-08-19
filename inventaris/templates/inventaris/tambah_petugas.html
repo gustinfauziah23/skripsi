@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags%}
+{% block content %}
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-folder"></i> Tambah Pengguna</h1>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">{{menu}}</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <h5 class="tile-title">Input Data Pengguna</h5>
+                <div class="tile-body">
+                    <form action="{%url 'formpetugas'%}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <div class="col-md-11">
+                                {% if messages %}
+                                {% for pesan in messages %}
+                                <div class="alert alert-{{ pesan.tags }}" align="left">
+                                    <b>{{ pesan }}</b>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+
+                                {{form | crispy }}
+                                <!-- <div class="form-group">
+                                    <label for="exampleSelect1">Status :</label>
+                                    <select class="form-control" name="status" id="exampleSelect1">
+                                      <option>Admin</option>
+                                      <option>Kepala Sekolah</option>
+                                    </select>
+                                  </div> -->
+                                <div class="form-group mt-3">
+                                    <label>Nama Pengguna : </label>
+                                    <input type="text" class="form-control" name="username" id="date-mask"
+                                        placeholder="Masukkan nama pengguna">
+                                </div>
+
+                                <div class="form-group mt-3">
+                                    <label>Kata Sandi : </label>
+                                    <input type="password" class="form-control" name="password" id="date-mask"
+                                        placeholder="Masukkan kata sandi">
+                                </div>
+
+                                <div class="form-group mt-3">
+                                    <label>Ulangi Kata Sandi : </label>
+                                    <input type="password" class="form-control" name="password2" id="date-mask"
+                                        placeholder="Konfirmasi kata sandi">
+                                </div>
+                                <div class="row d-save-none mt-4">
+                                    <div class="col-12 text-left"><button type="submit"
+                                            class="btn btn-primary">Simpan</button>
+                                        <a class="btn btn-danger" href="{% url 'datapengguna' %}">Kembali</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}

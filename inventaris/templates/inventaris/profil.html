@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-user fa-lg"></i> Profil Petugas</h1>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">{{menu}}</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card card-body">
+                <center><img class="" src="{{request.user.petugas.foto.url}}" height="180px" width="180">
+                </center>
+            </div>
+            <br>
+            <a class="mb-2 btn btn-primary btn-block" href="{% url 'beranda'%}">Beranda</a>
+        </div>
+        <div class="col-md-9">
+            <div class="card card-body">
+                <div class="form-group row">
+                    <div class="col-md-11">
+                        <form method="POST" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ formpetugas.as_p }}
+
+                            <div class="row d-save-none mt-4">
+                                <div class="col-12 text-left">
+                                    <input class="btn btn-primary" type="submit" name="Update">
+                                    <a class="btn btn-danger" href="{% url 'dataruangan' %}">Kembali</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}

@@ -1,0 +1,60 @@
+{% extends "basepimpinan.html" %}
+{% load static %}
+{% load crispy_forms_tags%}
+{% block content %}
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-folder"></i> Tambah Pimpinan</h1>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">{{menu}}</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <h5 class="tile-title">Input Data Pimpinan</h5>
+                <div class="tile-body">
+                    <form action="{%url 'formpimpinan'%}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <div class="col-md-11">
+                                {{form | crispy }}
+                                <div class="form-group mt-3">
+                                    <label>Username : </label>
+                                    <input type="text" class="form-control" name="username" id="date-mask"
+                                        placeholder="Username">
+                                </div>
+
+                                <div class="form-group mt-3">
+                                    <label>Password : </label>
+                                    <input type="password" class="form-control" name="password" id="date-mask"
+                                        placeholder="Password">
+                                </div>
+
+                                <div class="form-group mt-3">
+                                    <label>Ulangi Password : </label>
+                                    <input type="password" class="form-control" name="password2" id="date-mask"
+                                        placeholder="Password">
+                                </div>
+                                <div class="row d-save-none mt-4">
+                                    <div class="col-12 text-left"><button type="submit"
+                                            class="btn btn-primary">Simpan</button>
+                                        <a class="btn btn-danger" href="{% url 'beranda' %}">Kembali</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}

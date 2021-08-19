@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-cloud-upload"></i> Form Import Barang</h1>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item">Data Barang</li>
+            <li class="breadcrumb-item"><a href="#">{{menu}}</a></li>
+        </ul>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <label class="control-label">Upload</label>
+                <div class="form-group">
+                    <div class="custom-file">
+                        <div class="col-md-9">
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" role="alert">
+                                <p {% if message.tags %} class="" {% endif %}>{{ message }}</p>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <input type="file" class="custom-file-input" name="myfile">
+                                <label class="custom-file-label" for="myfile">Pilih File</label>
+
+                                <div class="row mt-3">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                        <a class="btn btn-danger" href="{% url 'databarang' %}">Cancel</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}

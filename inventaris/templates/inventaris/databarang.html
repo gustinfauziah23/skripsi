@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-file-text"></i> Data Inventaris</h1>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item active"><a href="#">{{menu}}</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="tile-body">
+                    <div class="tile-title-w-btn">
+                        <h3></h3>
+                        <p><a class="btn btn-primary icon-btn" href="{% url 'inputbarang' %}"><i
+                                    class="fa fa-plus"></i>Tambah</a>
+                            <a class="btn btn-primary icon-btn" href="{% url 'upload' %}"><i
+                                    class="fa fa-cloud-upload"></i>Import Data</a>
+                        </p>
+                    </div>
+                    <form method="GET" action="{% url 'laporan' %}" target="_blank">
+                        <div class="row">
+                            <div class="col">
+                                Cetak Berdasarkan Bulan :
+                                <input type="month" name="tgl_update" value="{{r.tgl_update}}" id="tgl_update"
+                                    class="form-control">
+                            </div>
+                            <div class="col mt-4">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-print"></i>Cetak</button>
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered" id="sampleTable">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode Barang</th>
+                                <th>Nama Barang</th>
+                                <th>Kondisi</th>
+                                <th>Lokasi</th>
+                                <th>Jenis Barang</th>
+                                <th>Kategori</th>
+                                <th width="100px">Tanggal</th>
+                                <th>Status</th>
+                                <th>Keterangan</th>
+                                <th>Gambar</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for r in halaman_list_barang.object_list %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{r.kode_barang}}</td>
+                                <td>{{r.nama_barang}}</td>
+                                <td>{{r.kondisi_barang}}</td>
+                                <td>{{r.lokasi}}</td>
+                                <td>{{r.jenis_barang}}</td>
+                                <td>{{r.kategori_barang}}</td>
+                                <td>{{r.tanggal}}</td>
+                                <td>{{r.status}}</td>
+                                <td>{{r.keterangan}}</td>
+                                {% if r.gambar %}
+                                <td>
+                                    <img src="{{r.gambar.url}}" width="80" height="80" class="prod-size">
+                                </td>
+                                {% endif %}
+                                <td>
+                                    <div class="btn-group"><a class="btn btn-primary"
+                                            href="{% url 'updatebarang' r.id %}"><i class="fa fa-lg fa-edit"></i></a>
+
+                                        <a class="btn btn-success" href="{% url 'tampil_qrcode' r.id %}"><i
+                                                class="fa fa-qrcode"></i></a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="13" class="text-center">Data Inventaris Kosong</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item {% if not previous %} disabled {% endif %}">
+                                <a class="page-link" href="{{ previous }}">Previous</a>
+                            </li>
+                            {% for n in halaman_list_barang.paginator.page_range %}
+                            {% if halaman_list_barang.number == n %}
+                            <li class="page-item active" aria>
+                                <span class="page-link">
+                                    {{ n }}
+                                    <span class="sr-only">(current)</span>
+                                </span>
+                            </li>
+                            {% elif n > halaman_list_barang.number|add:-3 and n < halaman_list_barang.number|add:3%} <li
+                                class="page-item"><a class="page-link" href="?halaman={{ n }}">{{ n }}</a></li>
+                                {% endif %}
+                                {% endfor %}
+                                <li class="page-item {% if not next %} disabled {% endif %}">
+                                    <a class="page-link" href="{{ next }}">Next</a>
+                                </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+</main>
+
+{% endblock content %}

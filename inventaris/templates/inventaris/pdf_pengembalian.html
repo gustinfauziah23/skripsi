@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html id="html">
+
+<body>
+    <div style="background-color: #cdcdcd" align="center">
+        <div style="width: 700px; background-color: #FFF">
+            <table width="100%">
+                <tr>
+                    <td><img src="/static/public/images/logo.png" style="width: 70px"></td>
+                    <td align="center" style="width: 1800px">
+                        <table width="100%">
+                            <tr>
+                                <td align="center"> <b>MADRASAH TSANAWIYAH NURUL HIDAYAH<br>
+                                        SUMBERREJO PAITON PROBOLINGGO 67291 JAWA TIMUR<br>
+                                        Alamat : Jl. Joharan Dusun Krajan RT 07 RW 03 Desa Sumberrejo Kode Pos 67291<br>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <hr style="border: double;">
+            <tr>
+                <td align="center"><b>
+                <td>LAPORAN PENGEMBALIAN INVENTARIS</td>
+                </td>
+            </tr>
+            <br>
+            <br>
+            <table border="1" cellpadding="5">
+                <tr>
+                    <th>No.</th>
+                    <th>Kode Barang</th>
+                    <th>Nama Barang</th>
+                    <th>Nama Peminjam</th>
+                    <th>Tanggal Pinjam</th>
+                    <th>Tanggal Kembali</th>
+                    <th>Status</th>
+                </tr>
+                <tbody>
+                    {% for r in pengembalian %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{r.barang}}</td>
+                        <td>{{r.barang.nama_barang}}</td>
+                        <td>{{r.nama}}</td>
+                        <td>{{r.tanggalpinjam}}</td>
+                        <td>{{r.tanggalkembali}}</td>
+                        <td>{{r.status}}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table><br>
+            <div align="right">
+                <table style="font-size: 12px">
+                    <tr align="center">
+                        <td>Sumberrejo</td>
+                    </tr>
+                    <tr align="center">
+                        <td>Kepala Sekolah
+                            <br><br><br><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center"><strong><u>SYAIFUR RIZAL,S.Pd</u></strong>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">print();</script>
+</body>
+
+</html>

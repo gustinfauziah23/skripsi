@@ -1,0 +1,41 @@
+{% extends "basepimpinan.html" %}
+{% load static %}
+{% block content %}
+
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-check"></i> Data Pengecekan</h1>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">{{menu}}</a></li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="tile-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered" id="sampleTable">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Kode Barang</th>
+                                        <th>Nama Barang</th>
+                                        <th>Tanggal Cek</th>
+                                        <th>Kondisi</th>
+
+                                    </tr>
+                                </thead>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}

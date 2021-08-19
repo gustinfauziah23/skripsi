@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html id="html">
+
+<body>
+    <div style="background-color: #cdcdcd" align="center">
+        <div style="width: 1000px; background-color: #FFF">
+            <center>
+                <table border="1">
+                    <tr>
+                        <td rowspan="2" width="130px"><img height="150px" width="130"
+                                src="/static/public/images/logo.png" /></td>
+                        <td width="230px" align="center">
+                            <font size="5"><b>{{obj.kode_barang}}</b></font><br>
+                        </td>
+                        <td rowspan="2" width="130px"><img height="150px" width="150" src="{{obj.qrcode.url}}" /></td>
+                    </tr>
+                    <tr>
+                        <td width="230px" align="center">
+                            <font size="4"><b>{{obj.nama_barang}} - {{obj.lokasi}}</b></font><br>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </div>
+    </div>
+    <script type="text/javascript">print();</script>
+</body>
+
+</html>

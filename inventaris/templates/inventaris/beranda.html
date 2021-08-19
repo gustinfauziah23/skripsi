@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> Beranda</h1>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">{{menu}}</a></li>
+        </ul>
+    </div>
+    <div class="alert alert-success alert-dismissable"><i class="fa fa-user fa-lg"></i> Selamat Datang
+        <b>{{request.user.petugas|capfirst}}</b> di Aplikasi Inventaris Sekolah MTs. Nurul Hidayah Sumberrejo Paiton
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+    </div>
+    <!-- <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="tile-body">
+                    <div class="table-responsive">
+                        <center><img class="images" src="{% static 'public/images/logo.png'%}" width="180" height="200"
+                                class="prod-size"></center>
+                        <center>
+                            <font size="6" face="Times New Roman"><b>Selamat Datang di Sistem Inventaris Sekolah</b>
+                            </font>
+                            <br>
+                            <font size="5" face="Times New Roman"><b>MTs. Nurul Hidayah Sumberrejo Paiton</b></font><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-md-3">
+            <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>
+                <div class="info">
+                    <h6>Data Inventaris</h6>
+                    <p><span class="count">{{ barang_inventaris }}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="widget-small info"><i class="icon fa fa-download fa-3x"></i>
+                <div class="info">
+                    <h6>Barang Masuk</h6>
+                    <p><span class="count">{{ barangmasuk }}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="widget-small warning"><i class="icon fa fa-upload fa-3x"></i>
+                <div class="info">
+                    <h6>Barang Keluar</h6>
+                    <p><span class="count">{{ barangkeluar }}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="widget-small danger"><i class="icon fa fa-trash fa-3x"></i>
+                <div class="info">
+                    <h6>Barang Rusak</h6>
+                    <p><span class="count">{{ barangrusak }}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="widget-small info"><i class="icon fa fa-history fa-3x"></i>
+                <div class="info">
+                    <h6>Barang Habis Pakai</h6>
+                    <p><span class="count">{{ habispakai }}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="widget-small primary"><i class="icon fa fa-warning fa-3x"></i>
+                <div class="info">
+                    <h6>Barang Tidak Habis Pakai</h6>
+                    <p><span class="count">{{ tidakhabispakai }}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="widget-small danger"><i class="icon fa fa-folder-open fa-3x"></i>
+                <div class="info">
+                    <h6>Data Peminjaman</h6>
+                    <p><span class="count">{{ peminjaman }}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="widget-small warning"><i class="icon fa fa-bars fa-3x"></i>
+                <div class="info">
+                    <h6>Data Pengembalian</h6>
+                    <p><span class="count">{{ pengembalian }}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}

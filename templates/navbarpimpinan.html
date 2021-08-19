@@ -1,0 +1,62 @@
+{% load static %}
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+        <div class="app-sidebar__user">
+                <img class="app-sidebar__user-avatar" src="{% static 'public/images/logo_nh.jpg'%}" width="70px" height="70px">
+                <div>
+                      <p class="app-sidebar__user-name">{{request.user.pimpinan|capfirst}}</p>
+                      <p class="app-sidebar__user-name">
+                            <font size="2">Kepala Sekolah</font><br>
+                      </p>
+                </div>
+          </div>
+
+        <ul class="app-menu">
+                <li><a class="app-menu__item" href="{% url 'beranda' %}"><i
+                                        class="app-menu__icon fa fa-dashboard"></i><span
+                                        class="app-menu__label">Beranda</span></a></li>
+
+                <li><a class="app-menu__item" href="{% url 'ruangan' %}"><i
+                                        class="app-menu__icon fa fa-bars"></i><span class="app-menu__label">Data
+                                        Ruangan</span></a></li>
+
+                <li><a class="app-menu__item" href="{% url 'datainventaris' %}"><i
+                                        class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Data
+                                        Inventaris</span></a></li>
+
+                <li class="treeview"><a class="app-menu__item" href="{% url 'datainventaris' %}" data-toggle="treeview"><i
+                                        class="app-menu__icon fa fa-check-square"></i><span class="app-menu__label">Data
+                                        Monitoring</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu">
+                                <li><a class="app-menu__item" href="{% url 'datapengecekan' %}"><i
+                                                        class="app-menu__icon fa fa-check"></i><span
+                                                        class="app-menu__label">Pengecekan</span></a></li>
+
+                                <li><a class="app-menu__item" href="{% url 'dataperpindahan' %}"><i
+                                                        class="app-menu__icon fa fa-exchange"></i><span
+                                                        class="app-menu__label">Perpindahan</span></a></li>
+                        </ul>
+                </li>
+
+                <li class="treeview"><a class="app-menu__item" href="{% url 'datainventaris' %}" data-toggle="treeview"><i
+                                        class="app-menu__icon fa fa-list"></i><span
+                                        class="app-menu__label">Transaksi</span><i
+                                        class="treeview-indicator fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu">
+
+                                <li><a class="app-menu__item" href="{% url 'datapeminjaman' %}"><i
+                                                        class="app-menu__icon fa fa-folder-open-o"></i><span
+                                                        class="app-menu__label">Peminjaman</span></a></li>
+
+                                <li><a class="app-menu__item" href="{% url 'datapengembalian' %}"><i
+                                                        class="app-menu__icon fa fa-folder-open"></i><span
+                                                        class="app-menu__label">Pengembalian</span></a></li>
+                        </ul>
+                </li>
+                <li><a class="app-menu__item" href="{% url 'data_petugas' %}"><i
+                                        class="app-menu__icon fa fa-id-card"></i><span class="app-menu__label">Data
+                                        Pengguna</span></a></li>
+
+        </ul>
+</aside>

@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="18x18" href="{% static 'public/images/logo.png' %}">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'public/css/main.css'%}">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <section class="material-half-bg">
+        <div class="cover"></div>
+    </section>
+    <section class="login-content">
+        <div class="logo">
+            <!-- <img src="{% static 'public/images/logo.png' %}" width="90px"> -->
+            <h2>Sistem Inventaris Sekolah MTs. Nurul Hidayah</h2>
+        </div>
+        <div class="login-box">
+            <form class="login-form" method="POST" action="{% url 'login'  %}">
+                {% if messages %}
+                {% for pesan in messages %}
+                <div class="alert alert-{{ pesan.tags }}" align="left">
+                    <b>{{ pesan }}</b>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% csrf_token %}
+                <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>LOGIN</h3>
+                <div class="form-group">
+                    <label class="control-label">Nama Pengguna</label>
+                    <input class="form-control" name="username" type="text" placeholder="Masukkan nama pengguna"
+                        autofocus>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Kata Sandi</label>
+                    <input class="form-control" name="password" type="password" placeholder="Masukkan kata sandi">
+                </div>
+                <!-- <div class="form-group">
+                    <label for="exampleSelect1">Masuk Sebagai</label>
+                    <select class="form-control" name="status" id="exampleSelect1">
+                      <option>Petugas</option>
+                      <option>Kepala Sekolah</option>
+                    </select>
+                  </div> -->
+                <!-- {% if messages %}
+                {% for pesan in messages %}
+                <div class="alert {% if pesan.tags %} alert-{% if pesan.tags == " error" %} danger {% else %} {{ pesan.tags }} {% endif %}" {% endif %}> {{ pesan }} </div>
+                {% endfor %}
+                {% endif %} -->
+                <div class="form-group btn-container">
+                    <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>LOGIN</button>
+                </div>
+            </form>
+
+        </div>
+    </section>
+    <!-- Essential javascripts for application to work-->
+    <script src="{% static 'public/js/jquery-3.3.1.min.js'%}"></script>
+    <script src="{% static 'public/js/popper.min.js'%}"></script>
+    <script src="{% static 'public/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'public/js/main.js'%}"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="{% static 'public/js/plugins/pace.min.js'%}"></script>
+    <script type="text/javascript">
+        // Login Page Flipbox control
+        $('.login-content [data-toggle="flip"]').click(function () {
+            $('.login-box').toggleClass('flipped');
+            return false;
+        });
+    </script>
+</body>
+
+</html>
